@@ -10,9 +10,9 @@
 
     $id = $_GET["edit"];
 
-    $getData = $conn->query("SELECT * FROM mahasiswa WHERE id = $id");
+    $data = $conn->query("SELECT * FROM mahasiswa WHERE id = '".$id."'");
 
-    $getData = $getData->fetch_assoc();
+    $getData = mysqli_fetch_array($data);
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
 <body>
     <h1>Edit Biodata</h1>
     <form action="updateData.php" method="POST">
-    <input type="hidden" nama="id" value="<?=$id?>">
+    <input type="hidden" name="id" value="<?=$getData['id']?>">
         <table>
             <tr>
                 <td>Nama Mahasiswa</td>

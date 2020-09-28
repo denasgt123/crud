@@ -24,8 +24,8 @@
         }
         else {
             
-            $conn->query("UPDATE 'mahasiswa' SET 'nama' = '".$namaMhs."', 'nrp' = '".$nrpMhs."', 
-                'email' = '".$emailMhs."', 'jurusan' = '".$jurusanMhs."' WHERE 'mahasiswa'.'id'=$idMhs");
+            $conn->query("UPDATE mahasiswa SET nama = '".$namaMhs."', nrp = '".$nrpMhs."', 
+                email = '".$emailMhs."', jurusan = '".$jurusanMhs."' WHERE id = '".$idMhs."'");
             
             $message = "Successfull";
         }
