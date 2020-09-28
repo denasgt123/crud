@@ -1,5 +1,5 @@
 <?php
-    if (isset($_POST["nama"])) {
+    if (isset($_POST["id"])) {
         include 'connect.php';
 
         $idMhs = $_POST["id"];

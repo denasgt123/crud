@@ -1,16 +1,16 @@
 <?php
     session_start();
     
-    if(!isset($_GET["id"])){
+    if(!isset($_GET["edit"])){
         header("location:index.php");
         exit();
     }
 
     include 'connect.php';
 
-    $id = $_GET["id"];
+    $id = $_GET["edit"];
 
-    $getData = $conn->query("SELECT * FROM mahasiswa WHERE id = ".$id);
+    $getData = $conn->query("SELECT * FROM mahasiswa WHERE id = $id");
 
     $getData = $getData->fetch_assoc();
 
