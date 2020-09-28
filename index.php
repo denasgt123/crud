@@ -39,7 +39,7 @@
 		<td><?=$listMahasiswa['nrp']?></td>
 		<td><?=$listMahasiswa['email']?></td>
 		<td><?=$listMahasiswa['jurusan']?></td>
-		<td><a href="update.php?id=<?=$listMahasiswa['id']?>">Edit</a> | <a href="delete.php?id=<?=$listMahasiswa['id']?>">Hapus</a></td>
+		<td><a href="update.php?edit=<?=$listMahasiswa['id']?>">Edit</a> | <a href="delete.php?delete=<?=$listMahasiswa['id'];?>">Hapus</a></td>
 	</tr>
 	<?php } ?>
 	</table>

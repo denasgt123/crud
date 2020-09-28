@@ -1,5 +1,19 @@
 <?php
-	session_start();
+    session_start();
+    
+    if(!isset($_GET["id"])){
+        header("location:index.php");
+        exit();
+    }
+
+    include 'connect.php';
+
+    $id = $_GET["id"];
+
+    $getData = $conn->query("SELECT * FROM mahasiswa WHERE id = ".$id);
+
+    $getData = $getData->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,59 +23,34 @@
     <title>Update</title>
 </head>
 <body>
-
-	<?php
-		include 'connect.php';
-		$getList = $conn->query("SELECT * FROM mahasiswa");
-	?>
-	<table border="1" cellpadding="10" cellspacing="0" style="width: 600px">
-	<tr>
-		<th>ID</th>
-		<th>Nama</th>
-		<th>NRP</th>
-		<th>Email</th>
-		<th>Jurusan</th>
-	</tr>
-	<?php
-		while($listMahasiswa = $getList->fetch_assoc()){
-	?>
-	<tr> 
-		<td><?=$listMahasiswa['id']?></td>
-		<td><?=$listMahasiswa['nama']?></td>
-		<td><?=$listMahasiswa['nrp']?></td>
-		<td><?=$listMahasiswa['email']?></td>
-		<td><?=$listMahasiswa['jurusan']?></td>
-	</tr>
-	<?php } ?>
-	</table>
-
     <h1>Edit Biodata</h1>
-    <form action="addData.php" method="POST">
+    <form action="updateData.php" method="POST">
+    <input type="hidden" nama="id" value="<?=$id?>">
         <table>
             <tr>
                 <td>Nama Mahasiswa</td>
                 <td>:</td>
-                <td><input type="text" name="nama"></td>
+                <td><input type="text" name="nama" value="<?=$getData['nama']?>"></td>
             </tr>
             <tr>
                 <td>NRP</td>
                 <td>:</td>
-                <td><input type="number" name="nrp"></td>
+                <td><input type="number" name="nrp" value="<?=$getData['nrp']?>"></td>
             </tr>
             <tr>
                 <td>Email Mahasiswa</td>
                 <td>:</td>
-                <td><input type="text" name="email"></td>
+                <td><input type="text" name="email" value="<?=$getData['email']?>"></td>
             </tr>
             <tr>
                 <td>Jurusan Mahasiswa</td>
                 <td>:</td>
-                <td><input type="text" name="jurusan"></td>
+                <td><input type="text" name="jurusan" value="<?=$getData['jurusan']?>"></td>
             </tr>
-            <tr>
+            <tr> 
                 <td></td>
                 <td></td>
-                <td><button>Tambah Data</button></td>
+                <td><button type="submit">Ubah Data</button></td>
             </tr>
         </table>
     </form>
