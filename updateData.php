@@ -2,37 +2,41 @@
     if (isset($_POST["id"])) {
         include 'connect.php';
 
-        $idMhs = $_POST["id"];
-        $namaMhs = $_POST["nama"];
-        $nrpMhs = $_POST["nrp"];
-        $emailMhs = $_POST["email"];
-        $jurusanMhs = $_POST["jurusan"];
+        $id = $_POST["id"];
+        $judul = $_POST["judul"];
+        $deskripsi = $_POST["deskripsi"];
+        $kategori = $_POST["kategori"];
+        $tanggal = $_POST["tanggal"];
+        $isi = $_POST["isi"];
 
         $message = "";
 
-        if($namaMhs == ""){
-            $message = "nama mahasiswa harus diisi";
+        if($judul == ""){
+            $message = "judul harus diisi";
         }
-        else if($nrpMhs == ""){
-            $message = "nrp mahasiswa harus diisi";
+        else if($deskripsi == ""){
+            $message = "deskripsi harus diisi";
         }
-        else if ($emailMhs == "") {
-            $message = "email mahasiswa harus diisi";
+        else if ($kategori == "") {
+            $message = "kategori harus diisi";
         }
-        else if ($jurusanMhs == "") {
-            $message = "jurusan mahasiswa harus diisi";
+        else if ($tanggal == "") {
+            $message = "tanggal harus diisi";
         }
+        else if ($isi == "") {
+            $message = "isi harus diisi";
+        }   
         else {
             
-            $conn->query("UPDATE mahasiswa SET nama = '".$namaMhs."', nrp = '".$nrpMhs."', 
-                email = '".$emailMhs."', jurusan = '".$jurusanMhs."' WHERE id = '".$idMhs."'");
+            $conn->query("UPDATE berita SET judul = '".$judul."', deskripsi = 
+                '".$deskripsi."', kategori = '".$kategori."', tanggal = '".$tanggal."', isi = '".$isi."' 
+                WHERE id = '".$id."'");
             
             $message = "Successfull";
         }
 
         $_SESSION["message"] = $message;
     }
-
     header("location:index.php");
     exit();
 ?>

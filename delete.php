@@ -1,9 +1,9 @@
 <?php
-    if(isset($_GET["delete"])){
+    if(isset($_GET["id"])){
         include 'connect.php';
 
-        $id = $_GET["delete"];
-        $conn->query("DELETE FROM mahasiswa WHERE id=$id");
+        $id = $_GET["id"];
+        $conn->query("DELETE FROM berita WHERE id='".$id."'");
 
         header("location:index.php");
         exit();

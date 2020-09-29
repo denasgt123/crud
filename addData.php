@@ -1,30 +1,34 @@
 <?php
-    if (isset($_POST["nama"])) {
+    if (isset($_POST["judul"])) {
         include 'connect.php';
 
-        $namaMhs = $_POST["nama"];
-        $nrpMhs = $_POST["nrp"];
-        $emailMhs = $_POST["email"];
-        $jurusanMhs = $_POST["jurusan"];
+        $judul = $_POST["judul"];
+        $deskripsi = $_POST["deskripsi"];
+        $kategori = $_POST["kategori"];
+        $tanggal = $_POST["tanggal"];
+        $isi = $_POST["isi"];
 
         $message = "";
 
-        if($namaMhs == ""){
-            $message = "nama mahasiswa harus diisi";
+        if($judul == ""){
+            $message = "judul harus diisi";
         }
-        else if($nrpMhs == ""){
-            $message = "nrp mahasiswa harus diisi";
+        else if($deskripsi == ""){
+            $message = "deskripsi harus diisi";
         }
-        else if ($emailMhs == "") {
-            $message = "email mahasiswa harus diisi";
+        else if ($kategori == "") {
+            $message = "kategori harus diisi";
         }
-        else if ($jurusanMhs == "") {
-            $message = "jurusan mahasiswa harus diisi";
+        else if ($tanggal == "") {
+            $message = "tanggal harus diisi";
+        }
+        else if ($isi == "") {
+            $message = "isi harus diisi";
         }
         else {
             
-            $conn->query("INSERT INTO mahasiswa (nama, nrp, email, jurusan) VALUES ('".$namaMhs."', 
-                '".$nrpMhs."', '".$emailMhs."', '".$jurusanMhs."')");
+            $conn->query("INSERT INTO berita (judul, deskripsi, kategori, tanggal, isi) VALUES ('".$judul."', 
+                '".$deskripsi."', '".$kategori."', '".$tanggal."', '".$isi."')");
             
             $message = "Successfull";
         }
