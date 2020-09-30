@@ -13,10 +13,4 @@ try {
     
     echo $e;
 }
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-//     echo ' not connected';
-// }
-// else echo 'connected';
-
 ?>
